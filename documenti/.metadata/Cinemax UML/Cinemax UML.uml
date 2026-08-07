@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_3PDGgJKXEfGaB7DwH54PUQ" name="Cinemax UML">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_3UQWoJKXEfGaB7DwH54PUQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_kr_wIJKZEfGaB7DwH54PUQ" name="Interaction2"/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_kszBYJKZEfGaB7DwH54PUQ" name="Interaction3"/>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_ks9ZcJKZEfGaB7DwH54PUQ" name="Activity4"/>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_ktGjYJKZEfGaB7DwH54PUQ" name="Activity5"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_EBl6AJKaEfGaB7DwH54PUQ" name="Cliente">
+    <generalization xmi:type="uml:Generalization" xmi:id="_Aa5YwJKdEfGaB7DwH54PUQ" general="_gMfpgJKaEfGaB7DwH54PUQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_JfIgwJKaEfGaB7DwH54PUQ" name="Proiezionista">
+    <generalization xmi:type="uml:Generalization" xmi:id="_qNTqUJKeEfGaB7DwH54PUQ" general="_gMfpgJKaEfGaB7DwH54PUQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_br-EoJKaEfGaB7DwH54PUQ" name="Bigliettaio">
+    <generalization xmi:type="uml:Generalization" xmi:id="_uv32kJKeEfGaB7DwH54PUQ" general="_gMfpgJKaEfGaB7DwH54PUQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_gMfpgJKaEfGaB7DwH54PUQ" name="Guest"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_bP3iAJKbEfGaB7DwH54PUQ" name="Fare una prenotazione"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_bQGLgJKbEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_jM97cJKbEfGaB7DwH54PUQ" name="Visualizzare prenotazioni"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_jNKIsJKbEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_ql5Q0JKbEfGaB7DwH54PUQ" name="Modificare una prenotazione">
+    <include xmi:type="uml:Include" xmi:id="__tShUJKbEfGaB7DwH54PUQ" addition="_1X5a0JKbEfGaB7DwH54PUQ"/>
+    <include xmi:type="uml:Include" xmi:id="_QSs0YJKcEfGaB7DwH54PUQ" addition="_bP3iAJKbEfGaB7DwH54PUQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_qmE3AJKbEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_1X5a0JKbEfGaB7DwH54PUQ" name="Eliminare una prenotazione"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_1YG2MJKbEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_eTnxcJKcEfGaB7DwH54PUQ" name="Logout"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_eT0lwJKcEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_oQ0aYJKcEfGaB7DwH54PUQ" name="Vedere dettagli proiezioni">
+    <include xmi:type="uml:Include" xmi:id="_3FGHAJKcEfGaB7DwH54PUQ" addition="_r7hKgJKcEfGaB7DwH54PUQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_r7hKgJKcEfGaB7DwH54PUQ" name="Cercare proiezioni"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="__HWtQJKcEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Wz5bEJKdEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_YoNRUJKdEfGaB7DwH54PUQ" name="Registrarsi"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_YoY3gJKdEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_mlGqAJKdEfGaB7DwH54PUQ" name="Inserire film"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_mlVTgJKdEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_paTVgJKdEfGaB7DwH54PUQ" name="Creare Proiezione"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_pagw4JKdEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_WN8_8JKeEfGaB7DwH54PUQ" name="Modificare Data proiezione">
+    <include xmi:type="uml:Include" xmi:id="_hvvBEJKeEfGaB7DwH54PUQ" addition="_caHAMJKeEfGaB7DwH54PUQ"/>
+    <include xmi:type="uml:Include" xmi:id="_ikPnMJKeEfGaB7DwH54PUQ" addition="_paTVgJKdEfGaB7DwH54PUQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WOLpcJKeEfGaB7DwH54PUQ"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_caHAMJKeEfGaB7DwH54PUQ" name="Eliminare una proiezione"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_caUbkJKeEfGaB7DwH54PUQ"/>
+</uml:Model>

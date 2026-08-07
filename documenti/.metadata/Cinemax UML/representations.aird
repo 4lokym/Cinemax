@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" uid="_Os8w0JKXEfGaB7DwH54PUQ" version="15.4.1.202403191723">
+  <semanticResources>Cinemax%20UML.notation</semanticResources>
+  <semanticResources>Cinemax%20UML.di</semanticResources>
+  <semanticResources>Cinemax%20UML.uml</semanticResources>
+</viewpoint:DAnalysis>
