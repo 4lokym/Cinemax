@@ -3,18 +3,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Cinemax {
-
-	final public static String DATASET_PATH = "./data/dataset.csv";
-	final public static String UTENTI_PATH = "./data/Utenti.csv";
-	final public static String PROIEZIONI_PATH = "./data/Proiezioni.csv";
-	final public static String PRENOTAZIONI_PATH = "./data/Prenotazioni.csv";
-	final public static String FILM_PATH = "./data/Film.csv";
-	final public static Scanner INPUT = new Scanner(new InputStreamReader(System.in));
+	
+	private static IOManager ioM = new IOManager();
 	
 	public static void main(String[] args) {
 		getMenu();
 		
-		INPUT.close();
 	}
 	
 	private static boolean valid(byte opzione) {
@@ -34,10 +28,8 @@ public class Cinemax {
 
         do{
             try{
-                opzione = INPUT.nextByte();
-                INPUT.nextLine();
-            }catch(InputMismatchException e){
-                INPUT.nextLine();
+                opzione = Byte.parseByte(ioM.getInput());
+            }catch(InputMismatchException | NumberFormatException  e){
                 System.out.print("Input non valido, riprova"+"\n"+
                 "opzione:");
                 opzione = 0;

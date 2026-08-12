@@ -11,4 +11,4 @@ javac -cp ".;lib\*" -d bin src\*.java
 
 :: -cp compilo i file prenseti nella cartella bin e lib
 :: Eseguo il main
-java -cp "bin;lib\*" TheKnife
+java -cp "bin;lib\*" Cinemax
