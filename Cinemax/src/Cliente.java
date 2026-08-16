@@ -1,9 +1,9 @@
 
-public class Cliente {
+public class Cliente extends Utente{
 
-	public Cliente(String nome, String cognome, String username, String[] passwordCifrata, String string,
+	public Cliente(String nome, String cognome, String username, String[] passwordCifrata, DataNascita data,
 			String domicilio) {
-		// TODO Auto-generated constructor stub
+		super(nome, cognome, username, passwordCifrata, data, domicilio, Registrazione.Ruolo.CLIENTE);
 	}
 
 }

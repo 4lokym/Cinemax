@@ -1,9 +1,10 @@
 
-public class Bigliettaio {
 
-	public Bigliettaio(String nome, String cognome, String username, String[] passwordCifrata, String string,
+public class Bigliettaio extends Utente{
+
+	public Bigliettaio(String nome, String cognome, String username, String[] passwordCifrata, DataNascita data,
 			String domicilio) {
-		// TODO Auto-generated constructor stub
+		super(nome, cognome, username, passwordCifrata, data, domicilio, Registrazione.Ruolo.BIGLIETTAIO);
 	}
 
 }

@@ -199,7 +199,7 @@ public class Registrazione {
 	}
 
 	public void getMenu() {
-		Utente utente;
+		Utente utente = null;
 		byte scelta = 0;
 		boolean conferma;
 		boolean loop = false;
@@ -216,20 +216,22 @@ public class Registrazione {
 				setDomicilio();
 				setRuolo();
 
-				utente = new Utente(nome, cognome, username, passwordCifrata, data_nascita, domicilio, ruolo);
-				registrazioneToCSV(utente);
+				//utente = new Utente(nome, cognome, username, passwordCifrata, data_nascita, domicilio, ruolo);
+				//registrazioneToCSV(utente);
 
 				switch (ruolo) {
 				case Ruolo.CLIENTE: {
-					// registrazioneToCSV(cliente);
+					utente = new Cliente(nome, cognome, username, passwordCifrata, data_nascita, domicilio);
 				}
 				case Ruolo.PROIEZIONISTA: {
-					// registrazioneToCSV(proiezionista);
+					utente = new Proiezionista(nome, cognome, username, passwordCifrata, data_nascita, domicilio);
 				}
 				case Ruolo.BIGLIETTAIO: {
-					// registrazioneToCSV(bigliettaio);
+					utente = new Bigliettaio(nome, cognome, username, passwordCifrata, data_nascita, domicilio);
 				}
 				}
+				
+				registrazioneToCSV(utente);
 
 				stampaDati();
 
