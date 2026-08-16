@@ -23,6 +23,11 @@ public class DataNascita {
 		return giorno +"/"+mese +"/"+anno;
 	}
 	
+	public static DataNascita fromString(String dataS) {
+		String temp[] = dataS.split("/");
+		return new DataNascita(Integer.parseInt(temp[0]), Integer.parseInt(temp[0]), Integer.parseInt(temp[0]));
+	}
+	
 	public static boolean giornoValido(int giorno) {
 		if(giorno > 0 && giorno <= 31) {
 			return true;

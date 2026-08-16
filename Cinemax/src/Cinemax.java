@@ -1,13 +1,23 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import com.opencsv.CSVWriterBuilder;
+import com.opencsv.ICSVWriter;
 
 public class Cinemax {
 	
 	private static IOManager ioM = new IOManager();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		getMenu();
+//		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(Paths.UTENTI_PATH, true));
+//		ICSVWriter w = new CSVWriterBuilder(out).withQuoteChar('"').build();
+//		String
+//		w.writeNext());
 		
 	}
 	

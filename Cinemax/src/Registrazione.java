@@ -1,7 +1,13 @@
+import java.io.*;
 import java.security.*;
+import java.security.spec.InvalidKeySpecException;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 import javax.crypto.*;
+
+import com.opencsv.CSVWriterBuilder;
+import com.opencsv.ICSVWriter;
 
 public class Registrazione {
 
@@ -32,11 +38,10 @@ public class Registrazione {
 	}
 
 	public void stampaDati() {
-		ioM.stampa(nome + " " + cognome + " " +
-				username + " " + data_nascita.toString() + 
-				" " + domicilio + " " + password + " " + ruolo);
+		ioM.stampa(nome + " " + cognome + " " + username + " " + data_nascita.toString() + " " + domicilio + " "
+				+ password + " " + ruolo);
 	}
-	
+
 	public void setNome() {
 		boolean conferma;
 		do {
@@ -83,7 +88,7 @@ public class Registrazione {
 		} while (!conferma);
 	}
 
-	public void setPassword() {
+	public void setPassword() throws NoSuchAlgorithmException, InvalidKeySpecException {
 		boolean conferma;
 		do {
 			conferma = false;
@@ -91,7 +96,7 @@ public class Registrazione {
 			password = ioM.getInput();
 
 			if (!password.contains(" ")) {
-				passwordCifrata = cifratura.criptaPassword(password);
+				passwordCifrata = cifratura.creaHashESalt(password);
 				conferma = false;
 			} else
 				conferma = true;
@@ -108,40 +113,40 @@ public class Registrazione {
 		int anno;
 		do {
 			try {
-			conferma = false;
+				conferma = false;
 
-			do {
-				ioM.stampa("Inserisci il giorno");
-				giorno = Byte.parseByte(ioM.getInput());
-				conferma = DataNascita.inputValido(giorno, DataNascita.Tipo.GIORNO);
+				do {
+					ioM.stampa("Inserisci il giorno");
+					giorno = Byte.parseByte(ioM.getInput());
+					conferma = DataNascita.inputValido(giorno, DataNascita.Tipo.GIORNO);
 
-				if (!conferma) {
-					ioM.stampa("Giorno non valido");
-				}
-			} while (!conferma);
+					if (!conferma) {
+						ioM.stampa("Giorno non valido");
+					}
+				} while (!conferma);
 
-			do {
-				ioM.stampa("Inserisci il mese");
-				mese = Byte.parseByte(ioM.getInput());
-				conferma = DataNascita.inputValido(mese, DataNascita.Tipo.MESE);
+				do {
+					ioM.stampa("Inserisci il mese");
+					mese = Byte.parseByte(ioM.getInput());
+					conferma = DataNascita.inputValido(mese, DataNascita.Tipo.MESE);
 
-				if (!conferma) {
-					ioM.stampa("Mese non valido");
-				}
-			} while (!conferma);
+					if (!conferma) {
+						ioM.stampa("Mese non valido");
+					}
+				} while (!conferma);
 
-			do {
-				ioM.stampa("Inserisci l'anno");
-				anno = Integer.parseInt(ioM.getInput());
-				conferma = DataNascita.inputValido(anno, DataNascita.Tipo.ANNO);
+				do {
+					ioM.stampa("Inserisci l'anno");
+					anno = Integer.parseInt(ioM.getInput());
+					conferma = DataNascita.inputValido(anno, DataNascita.Tipo.ANNO);
 
-				if (!conferma) {
-					ioM.stampa("Anno non valido");
-				}
-			} while (!conferma);
+					if (!conferma) {
+						ioM.stampa("Anno non valido");
+					}
+				} while (!conferma);
 
-			data_nascita = new DataNascita(giorno, mese, anno);
-			}catch(NumberFormatException e) {
+				data_nascita = new DataNascita(giorno, mese, anno);
+			} catch (NumberFormatException e) {
 				conferma = false;
 			}
 
@@ -198,9 +203,6 @@ public class Registrazione {
 		byte scelta = 0;
 		boolean conferma;
 		boolean loop = false;
-		Bigliettaio bigliettaio;
-		Proiezionista proiezionista;
-		Cliente cliente;
 
 		ioM.stampa("Menu Registrazione");
 
@@ -214,27 +216,24 @@ public class Registrazione {
 				setDomicilio();
 				setRuolo();
 
+				utente = new Utente(nome, cognome, username, passwordCifrata, data_nascita, domicilio, ruolo);
+				registrazioneToCSV(utente);
+
 				switch (ruolo) {
 				case Ruolo.CLIENTE: {
-					;
-					cliente = new Cliente(nome, cognome, username, passwordCifrata, data_nascita.toString(), domicilio);
 					// registrazioneToCSV(cliente);
 				}
 				case Ruolo.PROIEZIONISTA: {
-					proiezionista = new Proiezionista(nome, cognome, username, passwordCifrata, data_nascita.toString(),
-							domicilio);
 					// registrazioneToCSV(proiezionista);
 				}
 				case Ruolo.BIGLIETTAIO: {
-					bigliettaio = new Bigliettaio(nome, cognome, username, passwordCifrata, data_nascita.toString(),
-							domicilio);
 					// registrazioneToCSV(bigliettaio);
 				}
 				}
-				
+
 				stampaDati();
 
-			} catch (InputMismatchException e) {
+			} catch (InputMismatchException | NoSuchAlgorithmException | InvalidKeySpecException e) {
 				ioM.stampa("Errore durante la registrazione!");
 				loop = true;
 				continue;
@@ -242,21 +241,19 @@ public class Registrazione {
 		} while (loop);
 	}
 
-	/**
-	 * Permette di inserire i dati presi in input dall'utente nel database.
-	 * 
-	 * @param cliente tipologia di utente da cui estrapolare i dati.
-	 */
 	public void registrazioneToCSV(Utente utente) {
-//		try (OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(Cinemax.UTENTI_PATH, true));
-//				ICSVWriter w = new CSVWriterBuilder(out).withQuoteChar('"').build();) {
-//			String[] clienteToCsv = { utente.getNome(), utente.getCognome(), utente.getUsername(),
-//					Arrays.toString(utente.getPassword()), utente.getDataNascita(), utente.getDomicilio(),
-//					utente.getRuolo() };
-//			w.writeNext(clienteToCsv);
-//		} catch (IOException e) {
-//			ioM.stampa("Qualcosa e` andato storto :( -> file " + Cinemax.UTENTI_PATH + " non trovato");
-//		}
+		try {
+			OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(Paths.UTENTI_PATH, true));
+			ICSVWriter w = new CSVWriterBuilder(out).withQuoteChar('"').build();
+			
+			String[] clienteToCsv = { utente.getNome(), utente.getCognome(), utente.getUsername(),
+					Arrays.toString(utente.getPasswordCifrata()), utente.getDataNascita().toString(), utente.getDomicilio(),
+					utente.getRuolo().name() };
+			w.writeNext(clienteToCsv);
+			w.flush();
+		} catch (IOException e) {
+			ioM.stampa("Qualcosa e` andato storto :( -> file " + Paths.UTENTI_PATH + " non trovato");
+		}
 
 	}
 }
