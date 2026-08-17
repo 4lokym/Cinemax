@@ -14,10 +14,6 @@ public class Cinemax {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		getMenu();
-//		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(Paths.UTENTI_PATH, true));
-//		ICSVWriter w = new CSVWriterBuilder(out).withQuoteChar('"').build();
-//		String
-//		w.writeNext());
 		
 	}
 	
@@ -51,10 +47,13 @@ public class Cinemax {
         switch (opzione) {
 			case 1: {
 				new Login().getMenu();
+				break;
 			}case 2: {
 				new Registrazione().getMenu();
+				break;
 			}case 3: {
 				new Guest().getMenu();
+				break;
 			}
         }
 	

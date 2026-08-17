@@ -75,6 +75,24 @@ public class Utente {
 		this.data = data;
 	}
 
+	public void getMenu() {
+		
+	}
+	
+	public static Utente utenteSpecifico(Utente u) {
+		switch(u.getRuolo().name()) {
+			case "CLIENTE": 
+				u = new Cliente(u);
+				break;
+			case "PROIEZIONISTA": 
+				u = new Proiezionista(u);
+				break;
+			case "BIGLIETTAIO": 
+				u = new Bigliettaio(u);
+				break;
+		}
+		return u;
+	}
 	
 	
 }

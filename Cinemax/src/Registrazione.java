@@ -216,24 +216,15 @@ public class Registrazione {
 				setDomicilio();
 				setRuolo();
 
-				//utente = new Utente(nome, cognome, username, passwordCifrata, data_nascita, domicilio, ruolo);
-				//registrazioneToCSV(utente);
+				utente = new Utente(nome, cognome, username, passwordCifrata, data_nascita, domicilio, ruolo);
+				utente = Utente.utenteSpecifico(utente);
 
-				switch (ruolo) {
-				case Ruolo.CLIENTE: {
-					utente = new Cliente(nome, cognome, username, passwordCifrata, data_nascita, domicilio);
-				}
-				case Ruolo.PROIEZIONISTA: {
-					utente = new Proiezionista(nome, cognome, username, passwordCifrata, data_nascita, domicilio);
-				}
-				case Ruolo.BIGLIETTAIO: {
-					utente = new Bigliettaio(nome, cognome, username, passwordCifrata, data_nascita, domicilio);
-				}
-				}
 				
 				registrazioneToCSV(utente);
 
 				stampaDati();
+				
+				
 
 			} catch (InputMismatchException | NoSuchAlgorithmException | InvalidKeySpecException e) {
 				ioM.stampa("Errore durante la registrazione!");
@@ -241,6 +232,8 @@ public class Registrazione {
 				continue;
 			}
 		} while (loop);
+		
+		utente.getMenu();
 	}
 
 	public void registrazioneToCSV(Utente utente) {
